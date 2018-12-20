@@ -6,8 +6,10 @@ My first trailfinder app represented my first dive into React. Looking back on i
 
 ### Goals
 
+12/19
+
 - Remove Redux (it's not really necessary)
-- Convert hapdash CSS Modules styling to Sass
+- Convert hapdash CSS Modules styling to well organized Sass
 - Revamp UI for a better experience
 - Create a responsive layout
 - Handle asynchronous calls properly
