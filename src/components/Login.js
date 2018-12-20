@@ -38,6 +38,7 @@ export default class Login extends Component {
           //create user
         } else if (providers.indexOf("password") === -1) {
           //they used facebook
+          this.loginForm.reset();
           this.toaster.show({
             intent: Intent.WARNING,
             message: "Try alternative login"
