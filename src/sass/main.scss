@@ -1,0 +1,11 @@
+// Globals Styles
+@import 'partials/base';
+
+// Partial Styles
+@import 'partials/_layout.scss';
+@import 'partials/_typography.scss';
+
+// Component Styles
+@import 'components/_navbar.scss';
+@import 'components/_spinner.scss';
+@import 'components/_login.scss';

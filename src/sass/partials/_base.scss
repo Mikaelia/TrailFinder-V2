@@ -1,0 +1,44 @@
+@import '../modules/_all.scss';
+@import 'typography';
+
+/// ---> Resets and top level global styles
+
+*,
+*:after,
+*:before {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+
+    font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: .1rem;
+    font-weight: 300;
+    box-sizing: border-box;
+    background: $color-primary;
+    color: $color-white;
+}
+
+input {
+    outline: none;
+}
+
+// Scrollbar
+*::-webkit-scrollbar {
+    background-color: $color-primary;
+    width: .2rem;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: $color-white;
+}
+
+App {
+    position: relative;
+}

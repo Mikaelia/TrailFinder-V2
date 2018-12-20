@@ -1,0 +1,36 @@
+@mixin color-button ($bgcolor, $fcolor:$color-white) {
+    border: none;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: .2rem;
+    padding: 1.5rem 2rem;
+    background: $bgcolor;
+    color: $fcolor;
+    border-radius: .2rem;
+}
+
+
+/*
+/// --->  MEDIA QUERY MANAGER
+
+Pixel Range:        Em Value    BP Name
+0 - 414px                       --Default Styles--
+414px - 760px       26em        Medium
+760px+              48em        Large
+
+1em = 16px
+*/
+
+@mixin respond($breakpoint) {
+    @if $breakpoint==small {
+        @media only screen and (min-width: 26em) {
+            @content
+        }
+    }
+
+    @if $breakpoint==medium {
+        @media only screen and (min-width: 48em) {
+            @content
+        }
+    }
+}
