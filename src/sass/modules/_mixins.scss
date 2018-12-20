@@ -7,6 +7,13 @@
     background: $bgcolor;
     color: $fcolor;
     border-radius: .2rem;
+    transition: all .2s ease-out;
+
+    &:hover {
+        background-color: lighten($bgcolor, 3%);
+        transform: translateY(-1px);
+        box-shadow: $box-shadow-light;
+    }
 }
 
 
@@ -34,3 +41,6 @@ Pixel Range:        Em Value    BP Name
         }
     }
 }
+
+
+$bezier: all 0.4s cubic-bezier(1, 0, 0, 1);

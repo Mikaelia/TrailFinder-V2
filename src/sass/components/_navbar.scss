@@ -3,78 +3,73 @@
     top: 0;
     left: 0;
     width: 100%;
-    box-shadow: $box-shadow-light;
     height: 10vh;
+    box-shadow: $box-shadow-light;
+
+    display: flex;
 
     @include respond(medium) {
-        display: flex;
         justify-content: space-between;
         padding-bottom: 0;
         height: 70px;
         align-items: center;
-    }
-
-    &--mainView {
         list-style-type: none;
-        display: none;
-        width: 100vh;
 
-        @include respond(medium) {
-            display: flex;
-            margin-right: 30px;
-            flex-direction: row;
-            justify-content: flex-end;
-        }
     }
 
-    &--listView {
-        list-style-type: none;
-        display: block;
-    }
 
     &__toggle {
         position: absolute;
-        top: 10px;
-        right: 20px;
+        top: 2rem;
+        right: 2rem;
         cursor: pointer;
-        color: rgba(255, 255, 255, 0.8);
-        font-size: 24px;
+        color: $color-white;
+        font-size: 2.4rem;
     }
 
 
     &__logo {
-        cursor: pointer;
-        color: rgba(255, 255, 255, 0.9);
-        text-decoration: none;
-
-        margin-left: 20px;
+        position: absolute;
         display: inline-block;
+
+        top: 20%;
+        left: 3rem;
+
+        width: 22rem;
+        height: 3rem;
+
         margin-top: 1rem;
         text-decoration: none;
+        cursor: pointer;
+        color: $color-white;
 
+        &::after {
+            content: '';
+            position: absolute;
+            top: 2rem;
+            left: 3rem;
+            height: 2px;
+            background: linear-gradient(to right, $color-red, transparent);
+            width: 80%;
+        }
     }
 
     &__logo-icon {
         display: inline-block;
-        margin-top: -.5rem;
-
-        -webkit-animation: spin 9s linear infinite;
-        -moz-animation: spin 9s linear infinite;
         animation: spin 9s linear infinite;
-        rotate: (360deg);
 
         &:hover {
             text-decoration: none;
-            color: white;
+            color: $color-red;
         }
     }
 
     &__logo-text {
         font-weight: 600;
-        margin: 0 auto 2rem auto;
+        margin: 0 auto 2rem .5rem;
         text-align: center;
         text-decoration: none;
-        color: rgba(255, 255, 255, 0.85);
+        color: $color-white;
         position: absolute;
         left: calc(50% - 81.5px);
         font-size: 1.5rem;
@@ -89,13 +84,20 @@
     &__navlink {
         text-decoration: none;
         color: rgba(255, 255, 255, 0.857);
-        display: inline-block;
+        display: none;
         margin-top: 1rem;
         padding: .5rem 1rem;
         padding-bottom: .2rem;
         vertical-align: center;
         transition: all .3s ease-in-out;
         border-radius: .25rem;
+
+        @include respond(small) {
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            display: inline-block;
+        }
 
     }
 
@@ -110,6 +112,22 @@
         text-align: center;
         margin: auto;
         text-decoration: none;
+    }
+
+    &--mainView {
+        display: none;
+
+        @include respond(medium) {
+            display: flex;
+            margin-right: 30px;
+            flex-direction: row;
+            justify-content: flex-end;
+            width: 100vh;
+        }
+    }
+
+    &--listView {
+        display: block;
     }
 
 }

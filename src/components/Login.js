@@ -58,6 +58,7 @@ export default class Login extends Component {
     return (
       <div className="login">
         <Toaster
+          className="toaster"
           ref={element => {
             this.toaster = element;
           }}

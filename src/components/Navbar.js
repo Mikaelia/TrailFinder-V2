@@ -59,8 +59,9 @@ class Navbar extends Component {
               </Link>
             </li>
           </ul>
-        ) : (
-          <ul
+        ) : null
+        //{
+        /* <ul
             className={
               this.state.toggleShow ? "navbar--listView" : "navbar--mainView"
             }
@@ -71,8 +72,9 @@ class Navbar extends Component {
                 LOGIN
               </Link>
             </li>
-          </ul>
-        )}
+          </ul> */
+        //}
+        }
       </nav>
     );
   }
