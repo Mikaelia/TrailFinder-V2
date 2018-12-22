@@ -90,10 +90,7 @@ App {
   @media only screen and (min-width: 48em) {
     .navbar {
       justify-content: space-between;
-      padding-bottom: 0;
-      height: 70px;
-      align-items: center;
-      list-style-type: none; } }
+      align-items: center; } }
   .navbar__toggle {
     position: absolute;
     top: 2rem;
@@ -101,6 +98,9 @@ App {
     cursor: pointer;
     color: #FFFFFF;
     font-size: 2.4rem; }
+    @media only screen and (min-width: 48em) {
+      .navbar__toggle {
+        display: none; } }
   .navbar__logo {
     position: absolute;
     display: inline-block;
@@ -138,13 +138,35 @@ App {
 
 .navlist--listView {
   position: absolute;
-  top: 7.9rem;
   display: flox;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
   list-style: none;
   width: 100vw; }
+  @media only screen and (min-width: 48em) {
+    .navlist--listView {
+      list-style-type: none;
+      position: absolute;
+      left: 0;
+      top: 25%;
+      display: flex;
+      flex-direction: row;
+      width: 100vw;
+      justify-content: flex-end; } }
+
+.navlist--rowView {
+  display: none; }
+  @media only screen and (min-width: 48em) {
+    .navlist--rowView {
+      list-style-type: none;
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: flex;
+      flex-direction: row;
+      width: 100vw;
+      justify-content: flex-end; } }
 
 .navlist__navlink {
   position: relative;
@@ -154,10 +176,20 @@ App {
   width: 100vw;
   height: 0rem;
   background: #5C6281;
+  top: 7.9rem;
   color: transparent;
   text-decoration: none;
   transition: background-color .3s ease-in-out, font-size .3s ease;
   animation: drop 1s forwards, fade-font .5s forwards; }
+  @media only screen and (min-width: 48em) {
+    .navlist__navlink {
+      width: 100%;
+      flex-direction: row;
+      justify-content: flex-end;
+      padding: 0 3rem .5rem 3rem;
+      background: transparent;
+      border-radius: .2rem;
+      top: 50%; } }
   .navlist__navlink::after {
     content: '';
     position: absolute;
@@ -167,6 +199,9 @@ App {
     height: 0px;
     transform: scaleX(0.2);
     transition: transform 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95); }
+    @media only screen and (min-width: 48em) {
+      .navlist__navlink::after {
+        right: 45%; } }
   .navlist__navlink:hover::after {
     transform: scaleX(6);
     height: 1.3px; }
@@ -174,13 +209,10 @@ App {
     background: #6F7591;
     font-size: 1.1rem;
     box-shadow: 0 1px 3px rgba(27, 15, 58, 0.3), 0 1px 2px rgba(118, 88, 198, 0.1); }
-
-.navlist--rowView {
-  display: none; }
-  @media only screen and (min-width: 48em) {
-    .navlist--rowView {
-      display: flex;
-      width: 100vh; } }
+    @media only screen and (min-width: 48em) {
+      .navlist__navlink:hover {
+        font-size: 1rem;
+        font-weight: 700; } }
 
 .bouncing-loader {
   display: flex;

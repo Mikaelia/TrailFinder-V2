@@ -11,10 +11,7 @@
 
     @include respond(medium) {
         justify-content: space-between;
-        padding-bottom: 0;
-        height: 70px;
         align-items: center;
-        list-style-type: none;
     }
 
     &__toggle {
@@ -24,6 +21,10 @@
         cursor: pointer;
         color: $color-white;
         font-size: 2.4rem;
+
+        @include respond(medium) {
+            display: none;
+        }
     }
 
 
@@ -51,6 +52,8 @@
             background: linear-gradient(to right, $color-red, transparent);
             width: 80%;
         }
+
+
     }
 
     &__logo-icon {
@@ -61,6 +64,8 @@
             text-decoration: none;
             color: $color-red;
         }
+
+
     }
 
     &__logo-text {
@@ -79,17 +84,41 @@
 
     &--listView {
         position: absolute;
-        top: 7.9rem;
+
         display: flox;
         flex-direction: column;
         align-items: center;
         justify-content: space-around;
-
-
         list-style: none;
-
-
         width: 100vw;
+
+        @include respond(medium) {
+            list-style-type: none;
+            position: absolute;
+            left: 0;
+            top: 25%;
+            display: flex;
+            flex-direction: row;
+            width: 100vw;
+            justify-content: flex-end;
+        }
+    }
+
+    &--rowView {
+
+        display: none;
+
+        @include respond(medium) {
+            list-style-type: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            display: flex;
+            flex-direction: row;
+            width: 100vw;
+            justify-content: flex-end;
+
+        }
     }
 
 
@@ -102,11 +131,21 @@
         width: 100vw;
         height: 0rem;
         background: $color-grey-dark;
-
+        top: 7.9rem;
         color: transparent;
         text-decoration: none;
         transition: background-color .3s ease-in-out, font-size .3s ease;
         animation: drop 1s forwards, fade-font .5s forwards;
+
+        @include respond(medium) {
+            width: 100%;
+            flex-direction: row;
+            justify-content: flex-end;
+            padding: 0 3rem .5rem 3rem;
+            background: transparent;
+            border-radius: .2rem;
+            top: 50%;
+        }
 
         &::after {
             content: '';
@@ -116,12 +155,17 @@
             width: 1rem;
             height: 0px;
             transform: scaleX(.2);
-            transition: transform .3s cubic-bezier(0.445, 0.05, 0.55, 0.95)
+            transition: transform .3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+            @include respond(medium) {
+                right: 45%;
+            }
         }
 
         &:hover::after {
             transform: scaleX(6);
             height: 1.3px;
+
         }
 
         &:hover {
@@ -129,25 +173,18 @@
             font-size: 1.1rem;
             box-shadow: 0 1px 3px rgba(27, 15, 58, 0.3), 0 1px 2px rgba(118, 88, 198, 0.1);
 
-        }
-    }
+            @include respond(medium) {
+                font-size: 1rem;
+                font-weight: 700;
 
-    &--rowView {
-        display: none;
+            }
 
-        @include respond(medium) {
-            display: flex;
-            // margin-right: 30px;
-            // flex-direction: row;
-            // justify-content: flex-end;
-            width: 100vh;
         }
     }
 }
 
 
 
-li:last-of-type {}
 
 // @media screen and (min-width: 768px) {
 
