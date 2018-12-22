@@ -5,6 +5,7 @@
     width: 100%;
     height: 10vh;
     box-shadow: $box-shadow-light;
+    z-index: 1;
 
     display: flex;
 
@@ -14,9 +15,7 @@
         height: 70px;
         align-items: center;
         list-style-type: none;
-
     }
-
 
     &__toggle {
         position: absolute;
@@ -73,67 +72,62 @@
         position: absolute;
         left: calc(50% - 81.5px);
         font-size: 1.5rem;
+    }
+}
 
-        @include respond(medium) {
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
-        }
+.navlist {
+
+    &--listView {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+
+
+        list-style: none;
+        background: $color-grey-dark;
+        box-shadow: $box-shadow-light;
+        width: 100vw;
+        animation: drop .5s forwards;
+
     }
 
     &__navlink {
-        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 4rem;
+
         color: rgba(255, 255, 255, 0.857);
-        display: none;
-        margin-top: 1rem;
-        padding: .5rem 1rem;
-        padding-bottom: .2rem;
-        vertical-align: center;
-        transition: all .3s ease-in-out;
-        border-radius: .25rem;
+        text-decoration: none;
+        transition: all .3s ease;
+        animation: fade-font .5s forwards;
 
-        @include respond(small) {
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
-            display: inline-block;
+        &:hover {
+            background: $color-grey;
+            font-size: 1.1rem;
+            box-shadow: 0 1px 3px rgba(27, 15, 58, 0.3), 0 1px 2px rgba(118, 88, 198, 0.1);
+
         }
-
     }
 
-    .navlinks:hover {
-        color: white;
-        text-decoration: none;
-        box-shadow: 0 1px 3px rgba(27, 15, 58, 0.3), 0 1px 2px rgba(118, 88, 198, 0.1);
-        background-color: rgb(69, 130, 209);
-    }
-
-    &>li {
-        text-align: center;
-        margin: auto;
-        text-decoration: none;
-    }
-
-    &--mainView {
+    &--rowView {
         display: none;
 
         @include respond(medium) {
             display: flex;
-            margin-right: 30px;
-            flex-direction: row;
-            justify-content: flex-end;
+            // margin-right: 30px;
+            // flex-direction: row;
+            // justify-content: flex-end;
             width: 100vh;
         }
     }
-
-    &--listView {
-        display: block;
-    }
-
 }
 
 
-
+li:last-of-type {}
 
 // @media screen and (min-width: 768px) {
 

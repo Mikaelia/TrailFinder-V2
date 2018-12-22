@@ -9,8 +9,10 @@
     flex-direction: column;
     align-items: center;
 
+    animation: fade 1s forwards;
+
     &__header {
-        letter-spacing: .5rem;
+        letter-spacing: .2rem;
         font-size: 3.5rem;
         font-weight: 400;
     }

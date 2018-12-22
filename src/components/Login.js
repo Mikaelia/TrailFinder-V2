@@ -36,6 +36,7 @@ export default class Login extends Component {
       .then(providers => {
         if (providers.length === 0) {
           //create user
+          return app.auth().createUserWithEmailAndPassword(email, password);
         } else if (providers.indexOf("password") === -1) {
           //they used facebook
           this.loginForm.reset();
@@ -45,6 +46,13 @@ export default class Login extends Component {
           });
         } else {
           //sign user in
+          return app.auth().signInWithEmailAndPassword(email, password);
+        }
+      })
+      .then(user => {
+        if (user && user.email) {
+          this.loginForm.reset();
+          this.setState({ redirect: true });
         }
       })
       .catch(error => {
@@ -94,7 +102,7 @@ export default class Login extends Component {
           className="login__fb-button"
           onClick={() => this.authWithFacebook()}
         >
-          Login with Facebook
+          Log in with Facebook
         </button>
         <div className="login__note">
           <h5>Note</h5>

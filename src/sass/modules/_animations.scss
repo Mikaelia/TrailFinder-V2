@@ -11,3 +11,57 @@
         transform: rotate(360deg);
     }
 }
+
+@keyframes drop {
+    0% {
+        top: 8rem;
+        opacity: 0;
+        height: 0%
+    }
+
+    50% {
+
+        opacity: 1;
+    }
+
+    75% {}
+
+    100% {
+        top: 8rem;
+        height: 100%;
+    }
+}
+
+@keyframes fade-font {
+    0% {
+        font-weight: 300;
+        opacity: 0;
+    }
+
+    30% {
+
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        font-weight: 500;
+    }
+}
+
+@keyframes fade {
+    0% {
+        font-weight: 300;
+        opacity: 0;
+    }
+
+    30% {
+
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+        font-weight: 500;
+    }
+}

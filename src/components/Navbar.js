@@ -13,6 +13,7 @@ class Navbar extends Component {
 
   render() {
     const { auth, authenticated } = this.props;
+    const { toggleShow } = this.state;
 
     return (
       <nav className="navbar">
@@ -32,49 +33,53 @@ class Navbar extends Component {
         {authenticated ? (
           <ul
             className={
-              this.state.toggleShow ? "navbar--listView" : "navbar--mainView"
+              toggleShow
+                ? "navlist navlist--listView"
+                : "navlist navlist--rowView"
             }
           >
-            <li>
-              <Link to="/" className="navbar__navlink">
+            <li onClick={this.handleToggle}>
+              <Link to="/" className="navlist__navlink">
                 FIND
               </Link>
             </li>
 
-            <li>
-              <Link to="/trailmarks" className="navbar__navlink">
+            <li onClick={this.handleToggle}>
+              <Link to="/trailmarks" className="navlist__navlink">
                 TRAILMARKS
               </Link>
             </li>
 
-            <li>
-              <a href="#!" className="navbar__navlink">
+            <li onClick={this.handleToggle}>
+              <a href="#!" className="navlist__navlink">
                 {/* {auth.email} */} USERNAME
               </a>
             </li>
 
-            <li>
-              <Link to="/logout" className="navbar__navlink">
+            <li onClick={this.handleToggle}>
+              <Link to="/logout" className="navlist__navlink">
                 LOGOUT
               </Link>
             </li>
           </ul>
-        ) : null
-        //{
-        /* <ul
+        ) : (
+          <ul
             className={
-              this.state.toggleShow ? "navbar--listView" : "navbar--mainView"
+              this.state.toggleShow ? "navlist--listView" : "navlist--rowView"
             }
-            id="jsMenu"
           >
-            <li>
-              <Link to="/login" className="navbar__navlink">
+            <li onClick={this.handleToggle}>
+              <Link to="/login" className="navlist__navlink">
                 LOGIN
               </Link>
             </li>
-          </ul> */
-        //}
-        }
+            <li onClick={this.handleToggle}>
+              <Link to="/" className="navlist__navlink">
+                HOME
+              </Link>
+            </li>
+          </ul>
+        )}
       </nav>
     );
   }
