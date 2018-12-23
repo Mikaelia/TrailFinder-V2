@@ -135,7 +135,7 @@
         color: transparent;
         text-decoration: none;
         transition: background-color .3s ease-in-out, font-size .3s ease;
-        animation: drop 1s forwards, fade-font .5s forwards;
+        animation: drop .5s forwards, fade-font .5s forwards;
 
         @include respond(medium) {
             width: 100%;

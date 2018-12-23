@@ -6,13 +6,13 @@ import PropTypes from "prop-types";
 // this will have state, so we are using a class
 class Navbar extends Component {
   state = {
-    toggleShow: true
+    toggleShow: false
   };
 
   handleToggle = () => this.setState({ toggleShow: !this.state.toggleShow });
 
   render() {
-    const { auth, authenticated } = this.props;
+    const { authenticated } = this.props;
     const { toggleShow } = this.state;
 
     return (
@@ -84,17 +84,5 @@ class Navbar extends Component {
     );
   }
 }
-
-Navbar.propTypes = {
-  firebase: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired
-};
-
-// export default compose(
-//   firebaseConnect(),
-//   connect((state, props) => ({
-//     auth: state.firebase.auth
-//   }))
-// )(Navbar);
 
 export default Navbar;

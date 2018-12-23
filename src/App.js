@@ -5,6 +5,7 @@ import Loader from "./components/Spinner";
 import WelcomePage from "./components/pages/WelcomePage.js";
 import Login from "./components/Login";
 import Logout from "./components/Logout";
+import Mapview from "./components/Mapview";
 
 import "./css/style.css";
 
@@ -45,6 +46,7 @@ class App extends Component {
             <Route exact path="/login" component={Login} />
             <Route exact path="/logout" component={Logout} />
             <Route exact path="/" component={WelcomePage} />
+            <Route exact path="/mapview" component={Mapview} />
           </Switch>
         </div>
       </Router>
