@@ -17,9 +17,12 @@
 // }
 
 .trail-filter-section {
-    height: 20vh;
+    height: 35vh;
     width: 100vw;
+    padding: 2rem 0rem;
     background: $color-primary;
+
+
 
     @include respond(medium) {
         height: 100vh;
