@@ -6,14 +6,8 @@ import { withGoogleMap, GoogleMap, Marker } from "react-google-maps";
 const GoogleMapComponent = compose(
   withProps({
     loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: (
-      <div
-        style={{
-          height: `10rem`
-        }}
-      />
-    ),
-    mapElement: <div style={{ height: `100%` }} />
+    containerElement: <div className="map-container" />,
+    mapElement: <div className="map-component" />
   }),
   withGoogleMap
 )(props => (

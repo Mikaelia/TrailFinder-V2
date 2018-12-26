@@ -59,7 +59,7 @@ body {
   font-weight: 300;
   box-sizing: border-box;
   background: #31354F;
-  color: #FFFFFF; }
+  color: rgba(255, 255, 255, 0.979); }
 
 input {
   outline: none; }
@@ -69,7 +69,7 @@ input {
   width: .2rem; }
 
 *::-webkit-scrollbar-thumb {
-  background: #FFFFFF; }
+  background: rgba(255, 255, 255, 0.979); }
 
 App {
   position: relative; }
@@ -81,7 +81,8 @@ App {
   width: 100%;
   height: 10vh;
   box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.3);
-  z-index: 1;
+  z-index: 2;
+  background: #31354F;
   display: flex; }
   @media only screen and (min-width: 48em) {
     .navbar {
@@ -92,7 +93,7 @@ App {
     top: 2rem;
     right: 2rem;
     cursor: pointer;
-    color: #FFFFFF;
+    color: rgba(255, 255, 255, 0.979);
     font-size: 2.4rem; }
     @media only screen and (min-width: 48em) {
       .navbar__toggle {
@@ -107,7 +108,7 @@ App {
     margin-top: 1rem;
     text-decoration: none;
     cursor: pointer;
-    color: #FFFFFF; }
+    color: rgba(255, 255, 255, 0.979); }
     .navbar__logo::after {
       content: '';
       position: absolute;
@@ -127,7 +128,7 @@ App {
     margin: 0 auto 2rem .5rem;
     text-align: center;
     text-decoration: none;
-    color: #FFFFFF;
+    color: rgba(255, 255, 255, 0.979);
     position: absolute;
     left: calc(50% - 81.5px);
     font-size: 1.5rem; }
@@ -176,7 +177,7 @@ App {
   color: transparent;
   text-decoration: none;
   transition: background-color .3s ease-in-out, font-size .3s ease;
-  animation: drop .5s forwards, fade-font .5s forwards; }
+  animation: drop .3s forwards, fade-font .5s forwards; }
   @media only screen and (min-width: 48em) {
     .navlist__navlink {
       width: 100%;
@@ -220,13 +221,19 @@ App {
     width: 1rem;
     height: 1rem;
     margin: 3rem 0.2rem;
-    background: #FFFFFF;
+    background: rgba(255, 255, 255, 0.979);
     border-radius: 50%;
     animation: bouncing-loader 0.6s infinite alternate; }
   .bouncing-loader > div:nth-child(2) {
     animation-delay: 0.2s; }
   .bouncing-loader > div:nth-child(3) {
     animation-delay: 0.4s; }
+
+.light {
+  background: rgba(255, 255, 255, 0.979); }
+
+.dark {
+  background: #31354F; }
 
 .login {
   position: absolute;
@@ -249,7 +256,7 @@ App {
     margin-top: 3rem;
     font-weight: 400;
     width: 70%;
-    color: #FFFFFF; }
+    color: rgba(255, 255, 255, 0.979); }
   .login__login-button {
     border: none;
     text-transform: uppercase;
@@ -257,7 +264,7 @@ App {
     letter-spacing: .2rem;
     padding: 1.5rem 2rem;
     background: #AF3250;
-    color: #FFFFFF;
+    color: rgba(255, 255, 255, 0.979);
     border-radius: .2rem;
     transition: all .2s ease-out; }
     .login__login-button:hover {
@@ -522,3 +529,99 @@ input {
   transform: translateY(60px); }
 
 /*# sourceMappingURL=blueprint-icons.css.map */
+.trail {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 5rem;
+  font-size: 1.1rem;
+  font-weight: 400; }
+  .trail__features {
+    display: flex;
+    flex-direction: column; }
+  .trail__feature {
+    margin-top: 1rem;
+    position: relative; }
+  .trail__difficulty {
+    display: inline-block;
+    height: 1.5rem;
+    width: 1.5rem;
+    position: absolute;
+    top: -.1rem;
+    left: 7rem; }
+
+.difficulty--greenBlue {
+  background: #00BCD4;
+  border-radius: 50%; }
+
+.difficulty--blue {
+  background: #2196F3; }
+
+.difficulty--blueBlack {
+  height: 1.7rem;
+  width: 1.7rem;
+  -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  background: #536DFE; }
+
+.difficulty--black {
+  height: 1.7rem;
+  width: 1.7rem;
+  -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  background: #212121; }
+
+.difficulty--green {
+  background: #4CAF50;
+  border-radius: 50%; }
+
+.find-trail-page {
+  margin-top: 10vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column; }
+  @media only screen and (min-width: 48em) {
+    .find-trail-page {
+      flex-direction: row;
+      padding: 1rem; } }
+
+.trail-filter-section {
+  height: 20vh;
+  width: 100vw;
+  background: #31354F; }
+  @media only screen and (min-width: 48em) {
+    .trail-filter-section {
+      height: 100vh;
+      min-width: 30rem;
+      max-width: 30rem;
+      margin-right: 1rem;
+      background: #31354F; } }
+
+.trail-map-section {
+  display: flex;
+  width: 100vw;
+  flex-direction: column; }
+  @media only screen and (min-width: 48em) {
+    .trail-map-section {
+      height: 100vh; } }
+
+.map-container {
+  margin-top: .5rem;
+  height: 30rem; }
+  @media only screen and (min-width: 48em) {
+    .map-container {
+      margin-top: 0; } }
+
+.trail-container {
+  margin-top: .5rem;
+  padding: 2rem 1rem;
+  border-radius: .2rem;
+  height: 60rem;
+  color: #31354F;
+  background: #f0f0f5;
+  overflow-y: scroll;
+  z-index: 5; }
+
+.map-component {
+  height: 100%;
+  border-radius: .2rem;
+  z-index: 1; }

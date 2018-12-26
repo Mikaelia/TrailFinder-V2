@@ -1,0 +1,61 @@
+.trail {
+
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5rem;
+    font-size: 1.1rem;
+    font-weight: 400;
+
+    &__header {}
+
+    &__features {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__feature {
+        margin-top: 1rem;
+        position: relative;
+    }
+
+    &__difficulty {
+        display: inline-block;
+        height: 1.5rem;
+        width: 1.5rem;
+        position: absolute;
+        top: -.1rem;
+        left: 7rem;
+    }
+}
+
+.difficulty {
+    &--greenBlue {
+        background: #00BCD4;
+        border-radius: 50%;
+    }
+
+    &--blue {
+        background: #2196F3;
+    }
+
+    &--blueBlack {
+        height: 1.7rem;
+        width: 1.7rem;
+        -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        background: #536DFE;
+    }
+
+    &--black {
+        height: 1.7rem;
+        width: 1.7rem;
+        -webkit-clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+        background: #212121;
+    }
+
+    &--green {
+        background: #4CAF50;
+        border-radius: 50%;
+    }
+}

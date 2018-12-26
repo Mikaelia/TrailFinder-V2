@@ -5,27 +5,24 @@ class MapWithMarker extends Component {
   state = {
     isMarkerShown: false,
     onDragEnd: f => f,
-    onMarkerMounted: f => f,
-    newLat: 0,
-    newLng: 0
+    onMarkerMounted: f => f
   };
 
   componentWillMount() {
     const refs = {};
+    const { handleLocationChange } = this.props;
 
     this.setState({
       onMarkerMounted: ref => {
         refs.marker = ref;
       },
-
       onDragEnd: () => {
         // get position from map marker
         const position = refs.marker.getPosition();
         // store latitude and longitude in state
         const newLat = parseFloat(position.lat());
         const newLng = parseFloat(position.lng());
-
-        this.setState({ newLat, newLng });
+        handleLocationChange(newLat, newLng);
       }
     });
   }
@@ -33,7 +30,7 @@ class MapWithMarker extends Component {
   delayedShowMarker = () => {
     setTimeout(() => {
       this.setState({ isMarkerShown: true });
-    }, 3000);
+    }, 1000);
   };
 
   componentDidMount() {
@@ -41,27 +38,15 @@ class MapWithMarker extends Component {
   }
 
   render() {
-    const {
-      isMarkerShown,
-      onDragEnd,
-      onMarkerMounted,
-      newLat,
-      newLng
-    } = this.state;
-
+    const { isMarkerShown, onDragEnd, onMarkerMounted } = this.state;
     const { latitude, longitude } = this.props;
 
     return (
-      // If marker moves, set position, else use geolocation
       <GoogleMapComponent
         isMarkerShown={isMarkerShown}
         onDragEnd={onDragEnd}
         onMarkerMounted={onMarkerMounted}
-        defaultCenter={
-          newLat && newLng
-            ? { lat: newLat, lng: newLng }
-            : { lat: latitude, lng: longitude }
-        }
+        defaultCenter={{ lat: latitude, lng: longitude }}
       />
     );
   }

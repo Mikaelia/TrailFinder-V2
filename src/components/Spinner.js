@@ -1,11 +1,10 @@
 import React from "react";
 
-const Spinner = ({ message = "" }) => (
+const Spinner = ({ theme }) => (
   <div className="bouncing-loader">
-    {message && <h3>{message}</h3>}
-    <div className="bouncing-loader__child" />
-    <div className="bouncing-loader__child child--1" />
-    <div className="bouncing-loader__child child--2" />
+    <div className={`bouncing-loader__child  ${theme}`} />
+    <div className={`bouncing-loader__child child--1  ${theme}`} />
+    <div className={`bouncing-loader__child child--2  ${theme}`} />
   </div>
 );
 export default Spinner;
