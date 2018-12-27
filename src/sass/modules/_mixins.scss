@@ -10,7 +10,7 @@
     transition: all .2s ease-out;
 
     &:hover {
-        background-color: lighten($bgcolor, 3%);
+        background-color: lighten($bgcolor, 5%);
         transform: translateY(-1px);
         box-shadow: $box-shadow-light;
     }

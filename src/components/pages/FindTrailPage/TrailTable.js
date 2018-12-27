@@ -3,11 +3,17 @@ import v4 from "uuid";
 import Trail from "./Trail";
 import Spinner from "../../Spinner";
 
-const TrailTable = ({ trails }) => {
+const TrailTable = ({ trails, calcDistanceToTrail }) => {
   return (
     <div className="trail-container">
       {trails ? (
-        trails.map(trail => <Trail key={v4()} trail={trail} />)
+        trails.map(trail => (
+          <Trail
+            key={v4()}
+            trail={trail}
+            calcDistanceToTrail={calcDistanceToTrail}
+          />
+        ))
       ) : (
         <Spinner />
       )}

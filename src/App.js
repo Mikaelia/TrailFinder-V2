@@ -5,7 +5,7 @@ import Loader from "./components/Spinner";
 import WelcomePage from "./components/pages/WelcomePage.js";
 import Login from "./components/Login";
 import Logout from "./components/Logout";
-// import Mapview from "./components/pages/TrailFinder/Mapview";
+import Footer from "./components/Footer";
 import FindTrailPage from "./components/pages/FindTrailPage/FindTrailPage";
 import "./css/style.css";
 
@@ -48,6 +48,7 @@ class App extends Component {
             <Route exact path="/" component={WelcomePage} />
             <Route exact path="/mapview" component={FindTrailPage} />
           </Switch>
+          <Footer />
         </div>
       </Router>
     );

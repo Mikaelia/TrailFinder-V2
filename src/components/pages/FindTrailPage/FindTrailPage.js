@@ -7,6 +7,7 @@ import Spinner from "../../Spinner";
 import TrailFilterSection from "./TrailFilterSection";
 
 import { getGeoLocation } from "../../../helpers/geolocation";
+import geolib from "geolib";
 
 import {
   API_KEY,
@@ -27,6 +28,7 @@ class FindTrailPage extends Component {
 
   state = {
     defaultLocation: DEFAULT_LOCATION,
+    geolocation: null,
     latitude: null,
     longitude: null,
     results: null,
@@ -50,26 +52,47 @@ class FindTrailPage extends Component {
     console.log("ping");
     this.setState(
       {
+        geolocation: {
+          latitude: coords.latitude,
+          longitude: coords.longitude
+        },
         latitude: coords.latitude,
         longitude: coords.longitude
       },
-      () =>
-        this.fetchNearbyHikingTrails(this.state.latitude, this.state.longitude)
+      () => this.fetchNearbyHikingTrails(this.state)
     );
   };
 
   updateLocation = (latitude, longitude) => {
     this.setState({ latitude, longitude }, () =>
-      this.fetchNearbyHikingTrails(this.state.latitude, this.state.longitude)
+      this.fetchNearbyHikingTrails(this.state)
     );
   };
 
-  fetchNearbyHikingTrails = (lat, lon) => {
-    const { maxDistance, maxResults, sortBy, minLength, minStars } = this.state;
+  onTrailFiltersSubmit = params => {
+    this.setState(
+      {
+        ...this.state,
+        ...params
+      },
+      () => this.fetchNearbyHikingTrails(this.state)
+    );
+  };
+
+  fetchNearbyHikingTrails = state => {
+    const {
+      latitude,
+      longitude,
+      maxDistance,
+      maxResults,
+      sortBy,
+      minLength,
+      minStars
+    } = state;
     this.setState({ isLoading: true });
 
     axios(
-      `${PATH_BASE}${PATH_SEARCH}?${PARAM_LAT}${lat}&${PARAM_LON}${lon}&${PARAM_MAXDISTANCE}${maxDistance}&${PARAM_MAXRESULTS}${maxResults}&${PARAM_SORTBY}${sortBy}&${PARAM_MINLENGTH}${minLength}&${PARAM_MINSTARS}${minStars}&${API_KEY}`
+      `${PATH_BASE}${PATH_SEARCH}?${PARAM_LAT}${latitude}&${PARAM_LON}${longitude}&${PARAM_MAXDISTANCE}${maxDistance}&${PARAM_MAXRESULTS}${maxResults}&${PARAM_SORTBY}${sortBy}&${PARAM_MINLENGTH}${minLength}&${PARAM_MINSTARS}${minStars}&${API_KEY}`
     )
       .then(
         result =>
@@ -77,6 +100,16 @@ class FindTrailPage extends Component {
           this.setState({ results: result.data.trails, isLoading: false })
       )
       .catch(error => this._isMounted && this.setState({ error }));
+  };
+
+  calcDistanceToTrail = trailLocation => {
+    const { geolocation } = this.state;
+    return `${geolib.convertUnit(
+      "mi",
+      geolib.getDistance(trailLocation, geolocation),
+      2
+    )}
+    miles away`;
   };
 
   render() {
@@ -90,7 +123,9 @@ class FindTrailPage extends Component {
           }}
         />
         <div className="find-trail-page">
-          <TrailFilterSection />
+          <TrailFilterSection
+            onTrailFiltersSubmit={this.onTrailFiltersSubmit}
+          />
           <div className="trail-map-section">
             {latitude && longitude && (
               <MapSection
@@ -103,7 +138,10 @@ class FindTrailPage extends Component {
             {isLoading ? (
               <Spinner theme="light" />
             ) : (
-              <TrailTable trails={results} />
+              <TrailTable
+                calcDistanceToTrail={this.calcDistanceToTrail}
+                trails={results}
+              />
             )}
           </div>
         </div>

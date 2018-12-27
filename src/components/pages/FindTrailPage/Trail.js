@@ -26,12 +26,20 @@ url: "https://www.hikingproject.com/trail/7001511/tomales-point-trail"
 
 import React from "react";
 
-const Trail = ({ trail }) => {
+const Trail = ({ trail, calcDistanceToTrail }) => {
+  const distanceToUser = calcDistanceToTrail({
+    latitude: trail.latitude,
+    longitude: trail.longitude
+  });
+
   return (
     <div className="trail">
       <h2 className="trail__header">{trail.name}</h2>
       <div className="trail__features">
         <h4 className="trail__feature trail__location">{trail.location}</h4>
+        <div className="trail__feature trail__distance-to-user">
+          {distanceToUser}
+        </div>
         <div className="trail__feature trail__length">
           Length: {trail.length} miles
         </div>

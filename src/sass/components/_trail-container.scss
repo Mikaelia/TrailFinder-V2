@@ -1,5 +1,5 @@
 .trail {
-
+    position: relative;
     display: flex;
     flex-direction: column;
     margin-bottom: 5rem;
@@ -25,6 +25,12 @@
         position: absolute;
         top: -.1rem;
         left: 7rem;
+    }
+
+    &__distance-to-user {
+        top: 2rem;
+        right: 2rem;
+        position: absolute;
     }
 }
 

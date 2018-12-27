@@ -10,30 +10,38 @@ class TrailFilterSection extends Component {
 
   handleChange = e => {
     e.preventDefault();
-    const value = e.target.value;
+    const value = parseInt(e.target.value);
     const name = e.target.name;
     this.setState({ [name]: value });
     console.log(e.target.value);
     console.log(this.state);
   };
 
+  onSubmit = e => {
+    e.preventDefault();
+    const { onTrailFiltersSubmit } = this.props;
+    onTrailFiltersSubmit(this.state);
+  };
+
   render() {
     const { maxDistance, maxResults, minLength, minStars } = this.state;
     return (
       <div className="trail-filter-section">
-        <form className="trail-filter-form">
+        <form onSubmit={this.onSubmit} className="trail-filter-form">
           <label className="trail-filter trail-filter--distance">
-            Distance to trail
+            Distance to Trailhead
             <input
               type="range"
               name="maxDistance"
-              min="30"
+              min="0"
               max="200"
               defaultValue="30"
               step="10"
               onChange={this.handleChange}
             />
-            Value: {maxDistance}
+            <p>
+              <span> {maxDistance}</span> miles max to trail
+            </p>
           </label>
           <label className="trail-filter trail-filter--maxResults">
             Max Results
@@ -42,16 +50,43 @@ class TrailFilterSection extends Component {
               name="maxResults"
               min="10"
               max="500"
-              value="15"
+              defaultValue="15"
+              step="10"
+              onChange={this.handleChange}
             />
+            <p>
+              # Trails returned: <span> {maxResults}</span>
+            </p>
           </label>
           <label className="trail-filter trail-filter--minLength">
-            Minimum Trail Length
-            <input type="range" name="minLength" min="0" max="500" value="0" />
+            Min Trail Length
+            <input
+              type="range"
+              name="minLength"
+              min="0"
+              max="100"
+              defaultValue="0"
+              step="1"
+              onChange={this.handleChange}
+            />
+            <p>
+              At least <span> {minLength}</span> miles long
+            </p>
           </label>
           <label className="trail-filter trail-filter--starRating">
-            Minimum Star Rating
-            <input type="range" name="minStars" min="0" max="4" value="0" />
+            Star Rating
+            <input
+              type="range"
+              name="minStars"
+              min="0"
+              max="4"
+              defaultValue="0"
+              step="1"
+              onChange={this.handleChange}
+            />
+            <p>
+              Rated <span>{minStars}+ </span> stars
+            </p>
           </label>
 
           <input

@@ -9,11 +9,12 @@
     align-content: center;
 
     justify-content: center;
-    grid-gap: 2rem;
+    grid-row-gap: 2rem;
+    grid-column-gap: 4rem;
 
 
 
-    grid-template-columns: repeat(4, 20%);
+    grid-template-columns: repeat(4, 15%);
     grid-template-rows: repeat(3, 1fr);
 
     &__submit-button {
@@ -28,10 +29,44 @@
         @include color-button($color-grey-light, $color-primary);
     }
 
+    @include respond(medium) {
+        display: flex;
+        flex-direction: column;
+
+        justify-content: space-around;
+        align-items: stretch;
+    }
+
+
+
 }
 
 
 .trail-filter {
+    position: relative;
+    font-size: 1.1rem;
+    margin-top: 2rem;
+
+
+    & p {
+        font-size: 1rem;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        vertical-align: center;
+        font-weight: 200;
+    }
+
+    & span {
+        vertical-align: center;
+        display: inline-block;
+        color: #AF3250;
+        font-size: 1.2rem;
+        font-weight: 700;
+        text-decoration: underline;
+
+    }
+
     &--distance {
         grid-column: 1 / 3;
         grid-row: 1 / 2;
@@ -53,5 +88,3 @@
     }
 
 }
-
-.trail-filter label {}
