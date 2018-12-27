@@ -39,7 +39,7 @@ class Navbar extends Component {
             }
           >
             <li onClick={this.handleToggle}>
-              <Link to="/" className="navlist__navlink">
+              <Link to="/mapview" className="navlist__navlink">
                 FIND
               </Link>
             </li>
@@ -57,7 +57,7 @@ class Navbar extends Component {
             </li>
 
             <li onClick={this.handleToggle}>
-              <Link to="/logout" className="navlist__navlink">
+              <Link to="/login" className="navlist__navlink">
                 LOGOUT
               </Link>
             </li>

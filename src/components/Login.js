@@ -62,7 +62,7 @@ export default class Login extends Component {
 
   render() {
     if (this.state.redirect === true) {
-      return <Redirect to="/" />;
+      return <Redirect to="/mapview" />;
     }
     return (
       <div className="login">
