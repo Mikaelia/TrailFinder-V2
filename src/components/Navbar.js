@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import firebase from "firebase";
 
 import PropTypes from "prop-types";
 
@@ -52,7 +53,7 @@ class Navbar extends Component {
 
             <li onClick={this.handleToggle}>
               <a href="#!" className="navlist__navlink">
-                {/* {auth.email} */} USERNAME
+                USERNAME
               </a>
             </li>
 

@@ -1,4 +1,3 @@
-import Rebase from "re-base";
 import firebase from "firebase";
 import "firebase/firestore";
 
@@ -14,7 +13,9 @@ const firebaseConfig = {
 
 // Init firebase instance
 const app = firebase.initializeApp(firebaseConfig);
-const base = Rebase.createClass(app.database());
+// const base = Rebase.createClass(app.database());
+const db = firebase.firestore();
+db.settings({ timestampsInSnapshots: true });
 const facebookProvider = new firebase.auth.FacebookAuthProvider();
 
-export { app, base, facebookProvider };
+export { app, db, facebookProvider };

@@ -9,7 +9,9 @@ import Footer from "./components/Footer";
 import FindTrailPage from "./components/pages/FindTrailPage/FindTrailPage";
 import "./css/style.css";
 
-import { app, base } from "./base";
+import Trailmarks from "./components/Trailmarks";
+
+import { app } from "./base";
 
 class App extends Component {
   state = {
@@ -43,6 +45,7 @@ class App extends Component {
         <div className="App">
           <AppNavbar authenticated={this.state.authenticated} />
           <Switch>
+            <Route exact path="/trailmarks" component={Trailmarks} />
             <Route exact path="/login" component={Login} />
             <Route exact path="/logout" component={Logout} />
             <Route exact path="/" component={WelcomePage} />

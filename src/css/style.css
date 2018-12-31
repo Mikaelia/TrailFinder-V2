@@ -236,10 +236,9 @@ App {
   background: #31354F; }
 
 .login {
-  position: absolute;
-  top: 20vh;
   width: 90%;
-  left: 5%;
+  max-width: 40rem;
+  margin: 20vh auto 0 auto;
   padding: 1rem;
   display: flex;
   flex-direction: column;

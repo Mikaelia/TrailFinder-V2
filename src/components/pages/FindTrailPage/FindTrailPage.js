@@ -7,7 +7,9 @@ import Spinner from "../../Spinner";
 import TrailFilterSection from "./TrailFilterSection";
 
 import { getGeoLocation } from "../../../helpers/geolocation";
+import { calcDistanceToTrail } from "../../../helpers/distanceToTrail";
 import geolib from "geolib";
+import { db } from "../../../base";
 
 import {
   API_KEY,
@@ -28,10 +30,12 @@ class FindTrailPage extends Component {
 
   state = {
     defaultLocation: DEFAULT_LOCATION,
+    savedTrails: null,
+    selectedTrails: [],
     geolocation: null,
     latitude: null,
     longitude: null,
-    results: null,
+    trailResults: null,
     error: null,
     isLoading: false,
     maxDistance: 30,
@@ -43,8 +47,16 @@ class FindTrailPage extends Component {
 
   componentDidMount() {
     this._isMounted = true;
-    getGeoLocation(this.setLocation);
     this.setState({ isLoading: true });
+    getGeoLocation(this.setLocation);
+
+    //retrieve saved trails from firebase
+    db.collection("trails")
+      .get()
+      .then(snapshot => {
+        let trails = snapshot.docs.map(item => item.data());
+        this.setState({ savedTrails: trails });
+      });
   }
 
   setLocation = position => {
@@ -94,27 +106,52 @@ class FindTrailPage extends Component {
     axios(
       `${PATH_BASE}${PATH_SEARCH}?${PARAM_LAT}${latitude}&${PARAM_LON}${longitude}&${PARAM_MAXDISTANCE}${maxDistance}&${PARAM_MAXRESULTS}${maxResults}&${PARAM_SORTBY}${sortBy}&${PARAM_MINLENGTH}${minLength}&${PARAM_MINSTARS}${minStars}&${API_KEY}`
     )
-      .then(
-        result =>
-          this._isMounted &&
-          this.setState({ results: result.data.trails, isLoading: false })
-      )
+      .then(result => {
+        const trails = result.data.trails.map(trail => ({
+          ...trail,
+          selected: false
+        }));
+        this._isMounted &&
+          this.setState({ trailResults: trails, isLoading: false });
+      })
       .catch(error => this._isMounted && this.setState({ error }));
   };
 
-  calcDistanceToTrail = trailLocation => {
-    const { geolocation } = this.state;
-    return `${geolib.convertUnit(
-      "mi",
-      geolib.getDistance(trailLocation, geolocation),
-      2
-    )}
-    miles away`;
+  onSelectTrail = trail => {
+    const { trailResults, savedTrails } = this.state;
+    // make sure trail not already saved
+    const unsavedTrail = savedTrails.every(
+      dbTrail => dbTrail.name !== trail.name
+    );
+    const updatedTrails =
+      (unsavedTrail &&
+        trailResults.map((storedTrail, i) =>
+          trail.id === storedTrail.id
+            ? { ...trail, selected: !this.state.trails[i].selected }
+            : storedTrail
+        )) ||
+      savedTrails;
+
+    // Add selected trail to state
+    this.setState({
+      trails: updatedTrails
+    });
+  };
+  onSaveTrails = () => {
+    const { trailResults } = this.state;
+    const selectedTrails = trailResults.filter(trail => trail.selected);
+    selectedTrails.map(trail => db.collection("trails").add(trail));
   };
 
   render() {
-    const { latitude, longitude, isLoading, results } = this.state;
-    console.log(latitude, longitude, results);
+    const {
+      latitude,
+      longitude,
+      isLoading,
+      trailResults,
+      geolocation
+    } = this.state;
+    console.log(latitude, longitude, trailResults);
     return (
       <div>
         <Helmet
@@ -139,9 +176,12 @@ class FindTrailPage extends Component {
               <Spinner theme="light" />
             ) : (
               <TrailTable
-                calcDistanceToTrail={this.calcDistanceToTrail}
-                trails={results}
-              />
+                geolocation={geolocation}
+                trails={trailResults}
+                selectTrail={this.onSelectTrail}
+              >
+                <button onClick={this.onSaveTrails}>Save Trails</button>
+              </TrailTable>
             )}
           </div>
         </div>
