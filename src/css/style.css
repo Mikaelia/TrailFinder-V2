@@ -135,7 +135,8 @@ App {
 
 .navlist--listView {
   position: absolute;
-  display: flox;
+  margin-top: -.7rem;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
@@ -717,3 +718,18 @@ input {
   height: 8vh;
   width: 100%;
   background: #31354F; }
+
+.trailmarks-page {
+  margin-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #31354F; }
+
+.trailmarks {
+  margin-top: 5rem;
+  padding: 5rem; }
+  .trailmarks__header {
+    text-transform: uppercase;
+    font-size: 6rem;
+    font-weight: 300; }

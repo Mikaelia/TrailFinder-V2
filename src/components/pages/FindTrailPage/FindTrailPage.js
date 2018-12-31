@@ -30,24 +30,25 @@ class FindTrailPage extends Component {
 
   state = {
     defaultLocation: DEFAULT_LOCATION,
-    savedTrails: null,
-    selectedTrails: [],
     geolocation: null,
     latitude: null,
     longitude: null,
-    trailResults: null,
-    error: null,
-    isLoading: false,
     maxDistance: 30,
     maxResults: 15,
     sortBy: "quality",
     minLength: 0,
-    minStars: 0
+    minStars: 0,
+    savedTrails: null,
+    trailResults: null,
+    selectedTrails: [],
+    error: null,
+    isLoading: false
   };
 
   componentDidMount() {
     this._isMounted = true;
     this.setState({ isLoading: true });
+    // retrieve and set current user's location
     getGeoLocation(this.setLocation);
 
     //retrieve saved trails from firebase
@@ -59,6 +60,7 @@ class FindTrailPage extends Component {
       });
   }
 
+  // set initial location
   setLocation = position => {
     const { coords } = position;
     console.log("ping");
@@ -75,12 +77,14 @@ class FindTrailPage extends Component {
     );
   };
 
+  // Adjusts location based on map marker move
   updateLocation = (latitude, longitude) => {
     this.setState({ latitude, longitude }, () =>
       this.fetchNearbyHikingTrails(this.state)
     );
   };
 
+  // fetch trails with user filters enabled
   onTrailFiltersSubmit = params => {
     this.setState(
       {
@@ -107,41 +111,37 @@ class FindTrailPage extends Component {
       `${PATH_BASE}${PATH_SEARCH}?${PARAM_LAT}${latitude}&${PARAM_LON}${longitude}&${PARAM_MAXDISTANCE}${maxDistance}&${PARAM_MAXRESULTS}${maxResults}&${PARAM_SORTBY}${sortBy}&${PARAM_MINLENGTH}${minLength}&${PARAM_MINSTARS}${minStars}&${API_KEY}`
     )
       .then(result => {
-        const trails = result.data.trails.map(trail => ({
-          ...trail,
-          selected: false
-        }));
+        const trails = result.data.trails;
         this._isMounted &&
           this.setState({ trailResults: trails, isLoading: false });
       })
       .catch(error => this._isMounted && this.setState({ error }));
   };
 
-  onSelectTrail = trail => {
-    const { trailResults, savedTrails } = this.state;
-    // make sure trail not already saved
-    const unsavedTrail = savedTrails.every(
-      dbTrail => dbTrail.name !== trail.name
+  onSelectTrail = selectedTrail => {
+    const { savedTrails } = this.state;
+    // assign "saved" or "unsaved" prop to selected trail
+    selectedTrail["saved"] = !savedTrails.every(
+      trail => trail.name !== selectedTrail.name
     );
-    const updatedTrails =
-      (unsavedTrail &&
-        trailResults.map((storedTrail, i) =>
-          trail.id === storedTrail.id
-            ? { ...trail, selected: !this.state.trails[i].selected }
-            : storedTrail
-        )) ||
-      savedTrails;
-
-    // Add selected trail to state
+    console.log("This trail is already saved?", selectedTrail.saved);
     this.setState({
-      trails: updatedTrails
+      selectedTrails: [...this.state.selectedTrails, selectedTrail]
     });
   };
+
   onSaveTrails = () => {
-    const { trailResults } = this.state;
-    const selectedTrails = trailResults.filter(trail => trail.selected);
-    selectedTrails.map(trail => db.collection("trails").add(trail));
+    const { selectedTrails } = this.state;
+    // make sure trail not already saved
+    const filteredTrails = selectedTrails.filter(trail => !trail.saved);
+    console.log("filtered trails", filteredTrails);
+    filteredTrails.map(trail => db.collection("trails").add(trail));
+    this.setState({ selectedTrails: [] });
   };
+
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
 
   render() {
     const {
@@ -151,7 +151,6 @@ class FindTrailPage extends Component {
       trailResults,
       geolocation
     } = this.state;
-    console.log(latitude, longitude, trailResults);
     return (
       <div>
         <Helmet

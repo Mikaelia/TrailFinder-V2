@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Trail from "./pages/FindTrailPage/Trail";
 import v4 from "uuid";
 import { db } from "../base";
+import Helmet from "react-helmet";
 import Spinner from "./Spinner";
 
 class Trailmarks extends Component {
@@ -22,7 +23,7 @@ class Trailmarks extends Component {
 
   renderTrails = trails =>
     trails.length !== 0 ? (
-      <ul className="trail-list">
+      <ul className="trailmarks">
         {trails.map(trail => (
           <Trail key={v4()} trail={trail} />
         ))}
@@ -37,8 +38,20 @@ class Trailmarks extends Component {
 
   render() {
     const { trails } = this.state;
-    const list = trails && this.renderTrails(trails);
-    return list || <Spinner />;
+    const list = (trails && this.renderTrails(trails)) || <Spinner />;
+    return (
+      <div>
+        <Helmet
+          bodyAttributes={{
+            style: "background-color : rgba(255, 255, 255, 0.979)"
+          }}
+        />
+        <div className="trailmarks-page">
+          <h1 className="trailmarks__header">Trailmarks</h1>
+          {list}
+        </div>
+      </div>
+    );
   }
 }
 export default Trailmarks;
