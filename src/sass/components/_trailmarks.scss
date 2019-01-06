@@ -4,6 +4,7 @@
     flex-direction: column;
     align-items: center;
     color: $color-primary;
+    min-height: 100vh
 }
 
 .trailmarks {
@@ -11,8 +12,26 @@
     padding: 5rem;
 
     &__header {
+        font-size: 5rem;
         text-transform: uppercase;
-        font-size: 6rem;
         font-weight: 300;
+
+        @include respond(small) {
+            font-size: 6rem;
+        }
     }
+
+    & .trail {
+        padding: 2.5rem;
+    }
+
+    & .trail:hover {
+        background: $color-grey-lightest;
+        transform: translateX(-.5rem);
+    }
+
+}
+
+.trail-detail-link {
+    font-weight: 600;
 }

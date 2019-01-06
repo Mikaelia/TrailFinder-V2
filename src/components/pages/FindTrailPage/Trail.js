@@ -27,7 +27,13 @@ url: "https://www.hikingproject.com/trail/7001511/tomales-point-trail"
 import React from "react";
 import { calcDistanceToTrail } from "../../../helpers/distanceToTrail";
 
-const Trail = ({ trail, geolocation = null, onClick = f => f }) => {
+const Trail = ({
+  selected,
+  trail,
+  geolocation = null,
+  onClick = f => f,
+  children
+}) => {
   const distanceToUser = () =>
     calcDistanceToTrail(
       {
@@ -38,7 +44,10 @@ const Trail = ({ trail, geolocation = null, onClick = f => f }) => {
     );
 
   return (
-    <div className="trail" onClick={onClick}>
+    <div
+      className={selected ? "trail trail--selected" : "trail"}
+      onClick={onClick}
+    >
       <h2 className="trail__header">{trail.name}</h2>
       <div className="trail__features">
         <h4 className="trail__feature trail__location">{trail.location}</h4>
@@ -61,6 +70,7 @@ const Trail = ({ trail, geolocation = null, onClick = f => f }) => {
         </div>
         <div className="trail__feature trail__summary">{trail.summary}</div>
       </div>
+      {children}
     </div>
   );
 };

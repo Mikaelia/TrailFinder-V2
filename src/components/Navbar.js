@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import firebase from "firebase";
 
-import PropTypes from "prop-types";
-
 // this will have state, so we are using a class
 class Navbar extends Component {
   state = {
@@ -13,9 +11,8 @@ class Navbar extends Component {
   handleToggle = () => this.setState({ toggleShow: !this.state.toggleShow });
 
   render() {
-    const { authenticated } = this.props;
+    const { authenticated, user } = this.props;
     const { toggleShow } = this.state;
-
     return (
       <nav className="navbar">
         <span className="navbar__toggle">
@@ -30,7 +27,6 @@ class Navbar extends Component {
             FINDER
           </Link>
         </div>
-
         {authenticated ? (
           <ul
             className={
@@ -39,26 +35,30 @@ class Navbar extends Component {
                 : "navlist navlist--rowView"
             }
           >
-            <li onClick={this.handleToggle}>
+            <li>
               <Link to="/mapview" className="navlist__navlink">
                 FIND
               </Link>
             </li>
 
-            <li onClick={this.handleToggle}>
+            <li>
               <Link to="/trailmarks" className="navlist__navlink">
                 TRAILMARKS
               </Link>
             </li>
 
-            <li onClick={this.handleToggle}>
-              <a href="#!" className="navlist__navlink">
-                USERNAME
+            <li>
+              <a
+                style={{ textTransform: "uppercase" }}
+                href="#!"
+                className="navlist__navlink"
+              >
+                {user.displayName}
               </a>
             </li>
 
             <li onClick={this.handleToggle}>
-              <Link to="/login" className="navlist__navlink">
+              <Link to="/logout" className="navlist__navlink">
                 LOGOUT
               </Link>
             </li>

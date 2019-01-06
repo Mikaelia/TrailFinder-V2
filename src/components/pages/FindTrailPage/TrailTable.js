@@ -4,6 +4,10 @@ import Trail from "./Trail";
 import Spinner from "../../Spinner";
 
 const TrailTable = ({ trails, geolocation, selectTrail, children }) => {
+  const handlClick = trail => {
+    trail.selected = !trail.selected;
+    selectTrail(trail);
+  };
   return (
     <div className="trail-container">
       {children}
@@ -13,7 +17,8 @@ const TrailTable = ({ trails, geolocation, selectTrail, children }) => {
             key={v4()}
             trail={trail}
             geolocation={geolocation}
-            onClick={() => selectTrail(trail)}
+            onClick={() => handlClick(trail)}
+            selected={trail.selected}
           />
         ))
       ) : (

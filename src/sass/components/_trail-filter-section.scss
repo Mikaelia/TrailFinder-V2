@@ -1,3 +1,11 @@
+.trail-filter__header {
+    text-align: center;
+
+    @include respond(medium) {
+        margin-top: 3rem;
+    }
+}
+
 .trail-filter-form {
     height: 100%;
     width: 90%;
@@ -17,25 +25,31 @@
     grid-template-columns: repeat(4, 15%);
     grid-template-rows: repeat(3, 1fr);
 
+    @include respond(medium) {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: stretch;
+    }
+
     &__submit-button {
         grid-column: 1 / 3;
         grid-row: 3/ 4;
         @include color-button($color-red);
+
+        @include respond(medium) {
+            margin-top: 6rem;
+        }
     }
 
     &__reset-button {
         grid-column: 3/ 5;
         grid-row: 3/ 4;
         @include color-button($color-grey-light, $color-primary);
+
+        @include respond(medium) {}
     }
 
-    @include respond(medium) {
-        display: flex;
-        flex-direction: column;
-
-        justify-content: space-around;
-        align-items: stretch;
-    }
 
 
 
@@ -46,6 +60,10 @@
     position: relative;
     font-size: 1.1rem;
     margin-top: 2rem;
+
+    @include respond(medium) {
+        margin-top: 6rem;
+    }
 
 
     & p {

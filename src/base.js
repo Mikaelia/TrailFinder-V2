@@ -13,7 +13,7 @@ const firebaseConfig = {
 
 // Init firebase instance
 const app = firebase.initializeApp(firebaseConfig);
-// const base = Rebase.createClass(app.database());
+
 const db = firebase.firestore();
 db.settings({ timestampsInSnapshots: true });
 const facebookProvider = new firebase.auth.FacebookAuthProvider();

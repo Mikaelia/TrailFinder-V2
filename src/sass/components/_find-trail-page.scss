@@ -17,15 +17,13 @@
 // }
 
 .trail-filter-section {
-    height: 40vh;
+    height: 50vh;
     width: 100vw;
     padding: 2rem 0rem;
     background: $color-primary;
 
-
-
     @include respond(medium) {
-        height: 100vh;
+        height: 150vh;
         min-width: 30rem;
         max-width: 30rem;
         margin-right: 1rem;
@@ -35,19 +33,18 @@
 
 .trail-map-section {
     display: flex;
+
     width: 100vw;
     flex-direction: column;
 
     @include respond(medium) {
-        height: 100vh;
-
+        height: 150vh;
     }
-
 }
 
 .map-container {
     margin-top: .5rem;
-    height: 30rem;
+    height: 70vh;
 
     @include respond(medium) {
         margin-top: 0;
@@ -55,21 +52,33 @@
 
 }
 
+.trail-list-section {
+    // height: 40rem;
+}
+
 .trail-container {
     margin-top: .5rem;
     padding: 2rem 1rem;
     border-radius: .2rem;
-    height: 60rem;
+    height: 72vh;
+
 
 
     color: $color-primary;
     background: lighten($color-primary, 70%);
-    overflow-y: scroll;
+    overflow-y: auto;
     z-index: 5;
+
 }
 
 .map-component {
     height: 100%;
     border-radius: .2rem;
     z-index: 1;
+}
+
+.save-trail-button {
+    margin-top: .5rem;
+    width: 100%;
+    @include color-button(rgb(98, 180, 98))
 }

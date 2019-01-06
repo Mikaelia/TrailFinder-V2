@@ -27,6 +27,7 @@ class TrailFilterSection extends Component {
     const { maxDistance, maxResults, minLength, minStars } = this.state;
     return (
       <div className="trail-filter-section">
+        <h1 className="trail-filter__header">Trail Filters</h1>
         <form onSubmit={this.onSubmit} className="trail-filter-form">
           <label className="trail-filter trail-filter--distance">
             Distance to Trailhead
