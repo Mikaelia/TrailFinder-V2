@@ -539,6 +539,8 @@ input {
   font-size: 1.1rem;
   font-weight: 400;
   transition: all .3s ease-out; }
+  .trail:hover {
+    background: #e3e4f0; }
   .trail__features {
     display: flex;
     flex-direction: column; }

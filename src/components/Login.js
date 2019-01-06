@@ -50,7 +50,7 @@ export default class Login extends Component {
         }
       })
       .then(user => {
-        if (user && user.email) {
+        if (user && user.user.email) {
           this.loginForm.reset();
           this.setState({ redirect: true });
         }

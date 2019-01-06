@@ -9,6 +9,10 @@
     font-weight: 400;
     transition: all .3s ease-out;
 
+    &:hover {
+        background: $color-grey-lightest;
+    }
+
     &__header {}
 
     &__features {

@@ -24,19 +24,18 @@ class Navbar extends Component {
         <div className="navbar__logo">
           <div className="navbar__logo-icon">
             <i className="far fa-compass fa-2x" />
-          </div>{" "}
+          </div>
           <Link to="/" className="navbar__logo-text">
             <span
               style={{
                 fontWeight: 600
               }}
             >
-              {" "}
-              TRAIL{" "}
+              TRAIL
             </span>
-            FINDER{" "}
-          </Link>{" "}
-        </div>{" "}
+            FINDER
+          </Link>
+        </div>
         {authenticated ? (
           <ul
             className={
@@ -47,13 +46,13 @@ class Navbar extends Component {
           >
             <li>
               <Link to="/mapview" className="navlist__navlink">
-                FIND{" "}
-              </Link>{" "}
+                FIND
+              </Link>
             </li>
             <li>
               <Link to="/trailmarks" className="navlist__navlink">
-                TRAILMARKS{" "}
-              </Link>{" "}
+                TRAILMARKS
+              </Link>
             </li>
             <li>
               <a
@@ -63,14 +62,14 @@ class Navbar extends Component {
                 href="#!"
                 className="navlist__navlink"
               >
-                {user.displayName}{" "}
-              </a>{" "}
+                {user.email}
+              </a>
             </li>
-            <li onClick={this.handleToggle}>
+            <li>
               <Link to="/logout" className="navlist__navlink">
-                LOGOUT{" "}
-              </Link>{" "}
-            </li>{" "}
+                LOGOUT
+              </Link>
+            </li>
           </ul>
         ) : (
           <ul
@@ -78,18 +77,18 @@ class Navbar extends Component {
               this.state.toggleShow ? "navlist--listView" : "navlist--rowView"
             }
           >
-            <li onClick={this.handleToggle}>
+            <li>
               <Link to="/login" className="navlist__navlink">
-                LOGIN{" "}
-              </Link>{" "}
-            </li>{" "}
-            <li onClick={this.handleToggle}>
+                LOGIN
+              </Link>
+            </li>
+            <li>
               <Link to="/" className="navlist__navlink">
-                HOME{" "}
-              </Link>{" "}
-            </li>{" "}
+                HOME
+              </Link>
+            </li>
           </ul>
-        )}{" "}
+        )}
       </nav>
     );
   }
