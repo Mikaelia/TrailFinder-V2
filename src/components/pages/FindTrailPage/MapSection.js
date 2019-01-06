@@ -44,10 +44,10 @@ class Mapview extends Component {
   }
 
   render() {
-    const { showMap } = this.state;
+    const { isMarkerShown } = this.state;
     return (
       <div className="map-view">
-        {showMap ? this.renderMap() : <Spinner theme="dark" />}
+        {isMarkerShown ? this.renderMap() : <Spinner theme="dark" />}
       </div>
     );
   }
