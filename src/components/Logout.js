@@ -18,7 +18,7 @@ class Logout extends Component {
   };
 
   render() {
-    return this.state.redirect ? <Redirect to="/" /> : <Spinner />;
+    return this.state.redirect ? <Redirect to="/login" /> : <Spinner />;
   }
 }
 

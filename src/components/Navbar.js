@@ -8,7 +8,10 @@ class Navbar extends Component {
     toggleShow: false
   };
 
-  handleToggle = () => this.setState({ toggleShow: !this.state.toggleShow });
+  handleToggle = () =>
+    this.setState({
+      toggleShow: !this.state.toggleShow
+    });
 
   render() {
     const { authenticated, user } = this.props;
@@ -21,12 +24,19 @@ class Navbar extends Component {
         <div className="navbar__logo">
           <div className="navbar__logo-icon">
             <i className="far fa-compass fa-2x" />
-          </div>
+          </div>{" "}
           <Link to="/" className="navbar__logo-text">
-            <span style={{ fontWeight: 600 }}>TRAIL</span>
-            FINDER
-          </Link>
-        </div>
+            <span
+              style={{
+                fontWeight: 600
+              }}
+            >
+              {" "}
+              TRAIL{" "}
+            </span>
+            FINDER{" "}
+          </Link>{" "}
+        </div>{" "}
         {authenticated ? (
           <ul
             className={
@@ -37,31 +47,30 @@ class Navbar extends Component {
           >
             <li>
               <Link to="/mapview" className="navlist__navlink">
-                FIND
-              </Link>
+                FIND{" "}
+              </Link>{" "}
             </li>
-
             <li>
               <Link to="/trailmarks" className="navlist__navlink">
-                TRAILMARKS
-              </Link>
+                TRAILMARKS{" "}
+              </Link>{" "}
             </li>
-
             <li>
               <a
-                style={{ textTransform: "uppercase" }}
+                style={{
+                  textTransform: "uppercase"
+                }}
                 href="#!"
                 className="navlist__navlink"
               >
-                {user.displayName}
-              </a>
+                {user.displayName}{" "}
+              </a>{" "}
             </li>
-
             <li onClick={this.handleToggle}>
               <Link to="/logout" className="navlist__navlink">
-                LOGOUT
-              </Link>
-            </li>
+                LOGOUT{" "}
+              </Link>{" "}
+            </li>{" "}
           </ul>
         ) : (
           <ul
@@ -71,16 +80,16 @@ class Navbar extends Component {
           >
             <li onClick={this.handleToggle}>
               <Link to="/login" className="navlist__navlink">
-                LOGIN
-              </Link>
-            </li>
+                LOGIN{" "}
+              </Link>{" "}
+            </li>{" "}
             <li onClick={this.handleToggle}>
               <Link to="/" className="navlist__navlink">
-                HOME
-              </Link>
-            </li>
+                HOME{" "}
+              </Link>{" "}
+            </li>{" "}
           </ul>
-        )}
+        )}{" "}
       </nav>
     );
   }
