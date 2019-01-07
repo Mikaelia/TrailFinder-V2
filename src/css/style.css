@@ -59,7 +59,8 @@ body {
   font-weight: 300;
   box-sizing: border-box;
   background: #31354F;
-  color: rgba(255, 255, 255, 0.979); }
+  color: rgba(255, 255, 255, 0.979);
+  position: relative; }
 
 input {
   outline: none; }
@@ -751,8 +752,9 @@ input {
     grid-row: 2 / 3; }
 
 .footer {
-  height: 8vh;
-  width: 100%;
+  margin: 0 auto;
+  height: 10vh;
+  width: 98vw;
   background: #31354F; }
 
 .trailmarks-page {
@@ -786,8 +788,8 @@ input {
 .btn-remove:visited,
 .btn-remove:active {
   position: absolute;
-  right: 5%;
-  top: 1.5rem;
+  right: 2%;
+  top: 2rem;
   width: 2rem;
   height: 2rem;
   border: none;

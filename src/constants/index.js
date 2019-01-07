@@ -1,5 +1,3 @@
-import { sortBy } from "lodash";
-
 export const API_KEY = "key=200339330-556c3c08bab51add2eafd094be79c93f";
 export const DEFAULT_LOCATION = { lat: 38.43638, lon: -122.59887 };
 // TRAIL CONSTANTS

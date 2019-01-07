@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import firebase from "firebase";
 
 // this will have state, so we are using a class
 class Navbar extends Component {

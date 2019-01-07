@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import Trail from "./pages/FindTrailPage/Trail";
 import { Link } from "react-router-dom";
 import v4 from "uuid";
-import { db } from "../base";
+import { db, app } from "../base";
 import Helmet from "react-helmet";
 import Spinner from "./Spinner";
 import { RemoveButton } from "./RemoveButton";
+
+let _isMounted = false;
 
 class Trailmarks extends Component {
   state = {
@@ -14,27 +16,34 @@ class Trailmarks extends Component {
     longitude: null
   };
 
-  componentWillMount = () => this.updateTrails();
+  componentWillMount = () => {
+    _isMounted = true;
+    this.updateTrails();
+  };
 
   // real-time firebase listener
   updateTrails = () => {
     let trails = [];
-    db.collection("trails")
-      .orderBy("location")
-      .onSnapshot(snapshot => {
-        let changes = snapshot.docChanges();
-        changes.forEach(change => {
-          if (change.type === "added") {
-            const id = change.doc.id;
-            let trail = change.doc.data();
-            trail.id = id;
-            trails.push(trail);
-          }
+    const user = app.auth().currentUser.email;
+    _isMounted &&
+      db
+        .collection("trails")
+        .orderBy("location")
+        .onSnapshot(snapshot => {
+          let changes = snapshot.docChanges();
+          changes.forEach(change => {
+            if (change.type === "added" && change.doc.data().user === user) {
+              // replace trail id with firebase doc id
+              const id = change.doc.id;
+              let trail = change.doc.data();
+              trail.id = id;
+              trails.push(trail);
+            }
+          });
+          this.setState({
+            trails
+          });
         });
-        this.setState({
-          trails
-        });
-      });
   };
 
   handleClick = id => {
@@ -96,9 +105,12 @@ class Trailmarks extends Component {
       </h1>
     );
 
+  componentWillUnmount() {
+    _isMounted = false;
+  }
+
   render() {
     const { trails } = this.state;
-    console.log(trails);
     const list = (trails && this.renderTrails(trails)) || <Spinner />;
     return (
       <div>

@@ -41,7 +41,6 @@ class App extends Component {
   };
 
   render() {
-    console.log(app.auth);
     return this.state.loading ? (
       <Loader />
     ) : (

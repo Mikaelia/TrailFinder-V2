@@ -7,7 +7,7 @@ import Spinner from "../../Spinner";
 import TrailFilterSection from "./TrailFilterSection";
 
 import { getGeoLocation } from "../../../helpers/geolocation";
-import { db } from "../../../base";
+import { db, app } from "../../../base";
 
 import {
   API_KEY,
@@ -51,7 +51,7 @@ class FindTrailPage extends Component {
     // retrieve and set current user's location
     getGeoLocation(this.setLocation);
 
-    //retrieve saved trails from firebase
+    //retrieve already saved trails from firebase
     db.collection("trails")
       .get()
       .then(snapshot => {
@@ -68,7 +68,6 @@ class FindTrailPage extends Component {
   // set initial location
   setLocation = position => {
     const { coords } = position;
-    console.log("ping");
     this.setState(
       {
         geolocation: {
@@ -161,11 +160,16 @@ class FindTrailPage extends Component {
   };
 
   onSaveTrails = () => {
+    // Get current user
+    const user = app.auth().currentUser.email;
     const { selectedTrails } = this.state;
     // make sure trail not already saved
     const filteredTrails = selectedTrails.filter(trail => !trail.saved);
     console.log("filtered trails", filteredTrails);
-    filteredTrails.map(trail => db.collection("trails").add(trail));
+    filteredTrails.map(trail =>
+      // add user to trail prop
+      db.collection("trails").add({ ...trail, user })
+    );
     this.setState({
       selectedTrails: []
     });
