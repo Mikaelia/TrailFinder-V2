@@ -37,6 +37,10 @@ Goals:
 - View live at https://intense-tundra-32731.herokuapp.com/login
 
 #### Download
-- Clone or download this repository
-- run 'npm install'
-- Open on live server
+- Clone or download this repository:
+  - `git clone https://github.com/Mikaelia/TrailFinder-V2/edit/master/README.md`
+- run `npm install` to install dependencies
+- run `npm start` to open on browser with localhost
+
+#### Build CSS
+- run `npm run build:css` to compile, compress, and prefix css
