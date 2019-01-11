@@ -79,7 +79,7 @@ class Trailmarks extends Component {
                 }}
               >
                 <span>
-                  Details
+                  Details{" "}
                   <i
                     className="fas fa-angle-double-right fa-lg"
                     style={{
@@ -101,7 +101,7 @@ class Trailmarks extends Component {
           left: "calc(50% - 16rem)"
         }}
       >
-        No trails saved.Go find some!
+        No trails saved. Go find some!
       </h1>
     );
 
