@@ -58,7 +58,7 @@ body {
   letter-spacing: .1rem;
   font-weight: 300;
   box-sizing: border-box;
-  background: #31354F;
+  background: #343852;
   color: rgba(255, 255, 255, 0.979);
   position: relative; }
 
@@ -66,7 +66,7 @@ input {
   outline: none; }
 
 *::-webkit-scrollbar {
-  background-color: #31354F;
+  background-color: #343852;
   width: .2rem; }
 
 *::-webkit-scrollbar-thumb {
@@ -117,14 +117,14 @@ App {
       top: 2rem;
       left: 3rem;
       height: 2px;
-      background: linear-gradient(to right, #AF3250, transparent);
+      background: linear-gradient(to right, #4c9aa0, transparent);
       width: 80%; }
   .navbar__logo-icon {
     display: inline-block;
     animation: spin 9s linear infinite; }
     .navbar__logo-icon:hover {
       text-decoration: none;
-      color: #AF3250; }
+      color: #4c9aa0; }
   .navbar__logo-text {
     font-weight: 600;
     margin: 0 auto 2rem .5rem;
@@ -174,7 +174,7 @@ App {
   align-items: center;
   width: 100vw;
   height: 0rem;
-  background: #5C6281;
+  background: #31354F;
   top: 7.9rem;
   color: transparent;
   text-decoration: none;
@@ -235,7 +235,7 @@ App {
   background: rgba(255, 255, 255, 0.979); }
 
 .dark {
-  background: #AF3250; }
+  background: #4c9aa0; }
 
 .login {
   width: 90%;
@@ -264,12 +264,12 @@ App {
     font-weight: 700;
     letter-spacing: .2rem;
     padding: 1.5rem 2rem;
-    background: #AF3250;
+    background: #4c9aa0;
     color: rgba(255, 255, 255, 0.979);
     border-radius: .2rem;
     transition: all .2s ease-out; }
     .login__login-button:hover {
-      background-color: #c33859;
+      background-color: #57a9af;
       transform: translateY(-1px);
       box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.3); }
   .login__fb-button {
@@ -279,7 +279,7 @@ App {
     letter-spacing: .2rem;
     padding: 1.5rem 2rem;
     background: #B3B5C5;
-    color: #31354F;
+    color: #343852;
     border-radius: .2rem;
     transition: all .2s ease-out;
     width: 70%; }
@@ -304,11 +304,11 @@ input {
   border: none;
   border-bottom: 0.5px solid #5C6281;
   width: 100%;
-  color: #AF3250;
+  color: #4c9aa0;
   background: transparent;
   transition: all .2s ease-in; }
   input:focus {
-    border-color: #AF3250; }
+    border-color: #4c9aa0; }
 
 ::-webkit-input-placeholder {
   color: #6F7591;
@@ -601,14 +601,14 @@ input {
   height: 50vh;
   width: 100vw;
   padding: 2rem 0rem;
-  background: #31354F; }
+  background: #343852; }
   @media only screen and (min-width: 48em) {
     .trail-filter-section {
       height: 150vh;
       min-width: 30rem;
       max-width: 30rem;
       margin-right: 1rem;
-      background: #31354F; } }
+      background: #343852; } }
 
 .trail-map-section {
   display: flex;
@@ -630,8 +630,8 @@ input {
   padding: 2rem 1rem;
   border-radius: .2rem;
   height: 72vh;
-  color: #31354F;
-  background: #f0f0f5;
+  color: #343852;
+  background: #f3f4f8;
   overflow-y: auto;
   z-index: 5; }
 
@@ -658,7 +658,9 @@ input {
     box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.3); }
 
 .trail-filter__header {
-  text-align: center; }
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 1px; }
   @media only screen and (min-width: 48em) {
     .trail-filter__header {
       margin-top: 3rem; } }
@@ -689,12 +691,12 @@ input {
     font-weight: 700;
     letter-spacing: .2rem;
     padding: 1.5rem 2rem;
-    background: #AF3250;
+    background: #4c9aa0;
     color: rgba(255, 255, 255, 0.979);
     border-radius: .2rem;
     transition: all .2s ease-out; }
     .trail-filter-form__submit-button:hover {
-      background-color: #c33859;
+      background-color: #57a9af;
       transform: translateY(-1px);
       box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.3); }
     @media only screen and (min-width: 48em) {
@@ -709,7 +711,7 @@ input {
     letter-spacing: .2rem;
     padding: 1.5rem 2rem;
     background: #B3B5C5;
-    color: #31354F;
+    color: #343852;
     border-radius: .2rem;
     transition: all .2s ease-out; }
     .trail-filter-form__reset-button:hover {
@@ -734,7 +736,7 @@ input {
   .trail-filter span {
     vertical-align: center;
     display: inline-block;
-    color: #AF3250;
+    color: #a53a3a;
     font-size: 1.2rem;
     font-weight: 700;
     text-decoration: underline; }
@@ -755,14 +757,14 @@ input {
   margin: 0 auto;
   height: 10vh;
   width: 98vw;
-  background: #31354F; }
+  background: #343852; }
 
 .trailmarks-page {
   margin-top: 10rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  color: #31354F;
+  color: #343852;
   min-height: 100vh; }
 
 .trailmarks {

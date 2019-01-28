@@ -31,7 +31,7 @@
     }
 
     &__login-button {
-        @include color-button($color-red);
+        @include color-button($color-accent);
 
 
     }
@@ -60,12 +60,12 @@ input {
     border: none;
     border-bottom: .5px solid $color-grey-dark;
     width: 100%;
-    color: $color-red;
+    color: $color-accent;
     background: transparent;
     transition: all .2s ease-in;
 
     &:focus {
-        border-color: $color-red;
+        border-color: $color-accent;
     }
 }
 
