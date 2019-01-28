@@ -50,14 +50,14 @@ class FindTrailPage extends Component {
     });
     // retrieve and set current user's location
     getGeoLocation(this.setLocation);
+    const user = app.auth().currentUser.email;
 
     //retrieve already saved trails from firebase
     db.collection("trails")
       .get()
       .then(snapshot => {
-        let trails = snapshot.docs.map(item => {
-          const trail = item.data();
-          return trail;
+        let trails = snapshot.docs.filter(item => {
+          return user === item.data().user;
         });
         this.setState({
           savedTrails: trails
