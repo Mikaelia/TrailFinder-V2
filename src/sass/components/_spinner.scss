@@ -4,6 +4,7 @@
     position: absolute;
     top: 30%;
     left: calc(50% - 2rem);
+    z-index: 1000;
 
     &__child {
         width: 1rem;

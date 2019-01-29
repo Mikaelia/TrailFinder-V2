@@ -208,7 +208,7 @@ class FindTrailPage extends Component {
               />
             )}
             {isLoading ? (
-              <Spinner theme="dark" />
+              <Spinner theme="light" />
             ) : (
               <div className="trail-list-section">
                 <button
