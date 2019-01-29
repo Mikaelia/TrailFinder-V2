@@ -28,11 +28,11 @@ This app can:
 
 In Progess:
 
-- [] Provide modal on "detail" link on saved trails, which will show more trail details, pictures, and a directions to trailhead
-- [] Create necessary alerts for user interaction
-- [] Provide sort options for trailmarks
-- [] Provide key for difficulty rating
-- [] Design homepage
+- [ ] Provide modal on "detail" link on saved trails, which will show more trail details, pictures, and a directions to trailhead
+- [ ] Create necessary alerts for user interaction
+- [ ] Provide sort options for trailmarks
+- [ ] Provide key for difficulty rating
+- [ ] Design homepage
 
 ## Getting Started
 
