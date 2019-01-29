@@ -8,11 +8,11 @@ Version 1: https://github.com/Mikaelia/TrailFinder
 
 ## Motivation
 
-TrailfinderV1 was first crack at building a React web application. I've decided to improve the application by refactoring my code and design with what I have since learned
+Unlike TrailFinder1 which returned a random trail near your location, TrailFinder2 will return a list of trails based off of your specifications in your area, or the location that you select on a map. Click on the trails to select, and save them. Your saved trails are visible in the "Trailmarks" section of the application.
 
 ## Features
 
-This application is built with React, and styled with CSS/Sass instead of CSSModules. I used Firebase's user authentication, and database tools.
+This application is built with React, and styled with CSS/Sass. I used Firebase's user authentication, and database functionality.
 
 In this version of Trailfinder, I removed Redux because I felt that it was unnessary for an application of this size, and wanted to practice working with Firebase without Redux.
 
@@ -26,11 +26,11 @@ This app can:
 - [x] Give you the power to pre-filter the trails that are returned, and select your own region on a map to search for trails
 - [x] Let users select and save your favorite trails, which may then be viewed in the "Trailmarks" section of the application
 
-Goals:
+In Progess:
 
 - [] Provide modal on "detail" link on saved trails, which will show more trail details, pictures, and a directions to trailhead
 - [] Create necessary alerts for user interaction
-- [] Sort trailmarks options
+- [] Provide sort options for trailmarks
 
 ## Getting Started
 

@@ -1,9 +1,9 @@
 .find-trail-page {
     margin-top: 10vh;
     width: 100%;
-
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 
     @include respond(medium) {
         flex-direction: row;
@@ -26,19 +26,18 @@
         height: 150vh;
         min-width: 30rem;
         max-width: 30rem;
-        margin-right: 1rem;
         background: $color-primary;
     }
 }
 
 .trail-map-section {
     display: flex;
-
     width: 100vw;
     flex-direction: column;
 
     @include respond(medium) {
         height: 150vh;
+        border: solid 10px $color-primary;
     }
 }
 
@@ -57,28 +56,22 @@
 }
 
 .trail-container {
-    margin-top: .5rem;
     padding: 2rem 1rem;
-    border-radius: .2rem;
     height: 72vh;
-
-
-
     color: $color-primary;
     background: lighten($color-primary, 70%);
     overflow-y: auto;
     z-index: 5;
-
 }
 
 .map-component {
     height: 100%;
-    border-radius: .2rem;
     z-index: 1;
 }
 
 .save-trail-button {
-    margin-top: .5rem;
+    box-sizing: border-box;
+    @include color-button(rgb(98, 180, 98));
     width: 100%;
-    @include color-button(rgb(98, 180, 98))
+
 }

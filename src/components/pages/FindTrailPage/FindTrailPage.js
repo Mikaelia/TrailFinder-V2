@@ -191,7 +191,7 @@ class FindTrailPage extends Component {
       <div>
         <Helmet
           bodyAttributes={{
-            style: "background-color : rgba(255, 255, 255, 0.979)"
+            style: "background-color : #437A87"
           }}
         />
         <div className="find-trail-page">

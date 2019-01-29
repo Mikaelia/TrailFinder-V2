@@ -591,7 +591,8 @@ input {
   margin-top: 10vh;
   width: 100%;
   display: flex;
-  flex-direction: column; }
+  flex-direction: column;
+  overflow: hidden; }
   @media only screen and (min-width: 48em) {
     .find-trail-page {
       flex-direction: row;
@@ -607,7 +608,6 @@ input {
       height: 150vh;
       min-width: 30rem;
       max-width: 30rem;
-      margin-right: 1rem;
       background: #343852; } }
 
 .trail-map-section {
@@ -616,7 +616,8 @@ input {
   flex-direction: column; }
   @media only screen and (min-width: 48em) {
     .trail-map-section {
-      height: 150vh; } }
+      height: 150vh;
+      border: solid 10px #343852; } }
 
 .map-container {
   margin-top: .5rem;
@@ -626,9 +627,7 @@ input {
       margin-top: 0; } }
 
 .trail-container {
-  margin-top: .5rem;
   padding: 2rem 1rem;
-  border-radius: .2rem;
   height: 72vh;
   color: #343852;
   background: #f3f4f8;
@@ -637,12 +636,10 @@ input {
 
 .map-component {
   height: 100%;
-  border-radius: .2rem;
   z-index: 1; }
 
 .save-trail-button {
-  margin-top: .5rem;
-  width: 100%;
+  box-sizing: border-box;
   border: none;
   text-transform: uppercase;
   font-weight: 700;
@@ -651,7 +648,8 @@ input {
   background: #62b462;
   color: rgba(255, 255, 255, 0.979);
   border-radius: .2rem;
-  transition: all .2s ease-out; }
+  transition: all .2s ease-out;
+  width: 100%; }
   .save-trail-button:hover {
     background-color: #73bc73;
     transform: translateY(-1px);
@@ -756,7 +754,7 @@ input {
 .footer {
   margin: 0 auto;
   height: 10vh;
-  width: 98vw;
+  width: 100vw;
   background: #343852; }
 
 .trailmarks-page {
