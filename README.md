@@ -57,8 +57,8 @@ In Progess:
 
 ## ScreenShots
 
-![login](public/screenshots/loginScreen.png)
-![desktop mapview](public/screenshots/desktopMapView.png)
-![desktop trail view](public/screenshots/mobileView.png)
-![mobile view](public/screenshots/desktopTrailView.png)
+![login](public/screenshots/tf-login.png)
+![desktop mapview](public/screenshots/tf2-desktop.png)
+![desktop trail view](public/screenshots/tf2-mobile.png)
+![mobile view](public/screenshots/tf-details.png)
 ![trailmarks](public/screenshots/trailmarks.png)
